@@ -56,3 +56,4 @@ gem 'react-rails'
 gem 'graphql'
 
 gem 'graphiql-rails', group: :development
+gem 'pg'
