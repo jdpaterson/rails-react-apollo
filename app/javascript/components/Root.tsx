@@ -1,4 +1,4 @@
-import React from "react"
+import * as React from "react"
 import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from '@apollo/react-hooks';
 import { Posts} from "./Posts";
@@ -22,17 +22,3 @@ const Root = () => (
 )
 
 export default Root
-
-// client
-//     .query({
-//         query: gql`
-//             {
-//                 posts {
-//                     title
-//                 }
-//             }
-//         `
-//     })
-//     .then(result => {        
-//         console.log(result.data)
-//     });
