@@ -1,24 +1,15 @@
-# README
+# Readme
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A boilerplate setup including: Rails, React, Apollo(React), Ruby-GraphQL, Typescript, ESLint + Prettier
 
-Things you may want to cover:
+## Getting Started
 
-* Ruby version
+Run rails s
+Run bin/webpack-dev-server in separate terminal
+Navigate to localhost:3000
 
-* System dependencies
+## Creating React Components
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Create .jsx or .tsx files in the /app/javascript/components folder.
+The Root.tsx file is the main component, the ApolloClient is defined in that file.
+Nest your new component somewhere under the Root component, and it's all straight React from there.
