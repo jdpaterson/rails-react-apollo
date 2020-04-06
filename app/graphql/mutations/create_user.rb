@@ -6,11 +6,11 @@ module Mutations
 
     type Types::UserType
 
-    def resolve(username: nil, auth_provider: nil)
+    def resolve(username: nil, credentials: nil)
       User.create!(
         username: username,
-        email: auth_provider&.[](:credentials)&.[](:email),
-        password: auth_provider&.[](:credentials)&.[](:password)
+        email: credentials[:email],
+        password: credentials[:password]
       )
     end
   end

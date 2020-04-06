@@ -8,11 +8,9 @@ class Mutations::CreateUserTest < ActiveSupport::TestCase
   test 'create new user' do
     user = perform(
       username: 'Test User',
-      auth_provider: {
-        credentials: {
-          email: 'email@example.com',
-          password: '[omitted]'
-        }
+      credentials: {
+        email: 'email@example.com',
+        password: '[omitted]'
       }
     )
 

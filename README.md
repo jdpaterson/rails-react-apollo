@@ -13,3 +13,7 @@ Navigate to localhost:3000
 Create .jsx or .tsx files in the /app/javascript/components folder.
 The Root.tsx file is the main component, the ApolloClient is defined in that file.
 Nest your new component somewhere under the Root component, and it's all straight React from there.
+
+## Helpful Links
+
+(https://www.howtographql.com/graphql-ruby/4-authentication/)

@@ -1,7 +1,9 @@
 import * as React from "react";
 import ApolloClient, { InMemoryCache } from "apollo-boost";
 import { ApolloProvider } from "@apollo/react-hooks";
-import { Post } from "./Post";
+import { RootNav } from "./RootNav";
+
+interface IRootProps {}
 
 const client: ApolloClient<InMemoryCache> = new ApolloClient({
   fetchOptions: {
@@ -17,9 +19,12 @@ const client: ApolloClient<InMemoryCache> = new ApolloClient({
   }
 });
 
-const Root = (): JSX.Element => (
+const Root: React.FunctionComponent<IRootProps> = ({
+  children
+}): JSX.Element => (
   <ApolloProvider client={client}>
-    <Post />
+    <RootNav />
+    {children}
   </ApolloProvider>
 );
 
