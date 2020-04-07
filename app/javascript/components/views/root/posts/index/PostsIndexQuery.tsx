@@ -1,11 +1,7 @@
 import * as React from "react";
 import { gql } from "apollo-boost";
 import { useQuery } from "@apollo/react-hooks";
-
-interface IPost {
-  title: string;
-  rating: number;
-}
+import { IPost } from "../PostsRoot";
 
 interface IPostsAllPostsVars {}
 
@@ -22,7 +18,7 @@ const POSTS_ALL_POSTS = gql`
   }
 `;
 
-export const PostsAll = (): JSX.Element => {
+export const PostsIndexQuery = () => {
   const { loading, error, data } = useQuery<
     IPostsAllPostsData,
     IPostsAllPostsVars
