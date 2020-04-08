@@ -1,5 +1,5 @@
 module Types
-  class PostAttributes < Types::BaseInputObject
+  class PostAttributes < GraphQL::Schema::InputObject
     description 'Attributes for creating or modifying a Post'
 
     argument :id, ID, required: false

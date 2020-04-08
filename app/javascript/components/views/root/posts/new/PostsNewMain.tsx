@@ -1,26 +1,38 @@
 import * as React from "react";
 import { gql } from "apollo-boost";
-import { useQuery } from "@apollo/react-hooks";
+import { useQuery, useMutation } from "@apollo/react-hooks";
 import { IPost } from "../PostsRoot";
 import {
   FormBody,
+  FormFooter,
   FormHeader,
   FormIndex,
   FormItem,
-  InputText
+  InputText,
+  InputSubmit
 } from "../../../../library";
 
-interface IPostsAllPostsVars {}
+interface IPostsCreatePostsVars {
+  input: {
+    post: IPost;
+  };
+}
+// interface IPostsCreatePostsVars {
+//   post: IPost;
+// }
 
-interface IPostsAllPostsData {
-  posts: Array<IPost>;
+interface IPostsCreatePostsData {
+  post: IPost;
 }
 
-const POSTS_ALL_POSTS = gql`
-  query postsAllPosts {
-    posts {
-      title
-      rating
+const POSTS_CREATE_POST = gql`
+  mutation createPost($input: CreatePostInput!) {
+    createPost(input: $input) {
+      post {
+        title
+        body
+        rating
+      }
     }
   }
 `;
@@ -35,8 +47,26 @@ export const PostsNewMain = () => {
     title: "",
     body: ""
   });
+  const [createPost, { data }] = useMutation<
+    IPostsCreatePostsData,
+    IPostsCreatePostsVars
+  >(POSTS_CREATE_POST);
+  console.log(postsNewForm);
   return (
-    <FormIndex>
+    <FormIndex
+      form={{
+        onSubmit: e => {
+          e.preventDefault();
+          createPost({
+            variables: {
+              input: {
+                post: { ...postsNewForm }
+              }
+            }
+          });
+        }
+      }}
+    >
       <FormHeader></FormHeader>
       <FormBody>
         <FormItem>
@@ -53,12 +83,21 @@ export const PostsNewMain = () => {
           <InputText
             input={{
               onChange: ({ target: { value } }) =>
-                setPostsNewForm({ ...postsNewForm, body: value })
+                setPostsNewForm({ ...postsNewForm, body: value }),
+              value: postsNewForm.body
             }}
             label={{ title: "Post Body:" }}
           />
         </FormItem>
       </FormBody>
+      <FormFooter>
+        <FormItem>
+          <InputSubmit />
+        </FormItem>
+      </FormFooter>
     </FormIndex>
   );
 };
+
+// {"operationName"=>"createPost", "variables"=>{"input"=>{"post"=>{"title"=>"123", "body"=>"321"}}}
+//                                 "variables"=>{"input"=>{"post"=>{"title"=>"123", "body"=>"321"}}}

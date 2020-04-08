@@ -3,8 +3,9 @@ import Root from "../Root";
 import { SubNavbar } from "../../../library/nav";
 
 export interface IPost {
-  title: string;
-  rating: number;
+  title?: string;
+  body?: string;
+  rating?: number;
 }
 
 interface IPostsRootProps {}
@@ -15,7 +16,7 @@ const PostsRoot: React.FunctionComponent<IPostsRootProps> = ({
     <SubNavbar
       navbarItems={[
         { aProps: { href: "/posts/new", title: "New" } },
-        { aProps: { href: "/posts/", title: "All" } }
+        { aProps: { href: "/posts", title: "All" } }
       ]}
     />
     {children}

@@ -1,7 +1,10 @@
 import * as React from "react";
 
-interface IFormIndexProps {}
+interface IFormIndexProps {
+  form: React.FormHTMLAttributes<HTMLFormElement>;
+}
 
 export const FormIndex: React.FunctionComponent<IFormIndexProps> = ({
-  children
-}) => <form>{children}</form>;
+  children,
+  form
+}) => <form {...form}>{children}</form>;

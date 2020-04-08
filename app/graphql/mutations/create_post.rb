@@ -1,15 +1,15 @@
 module Mutations
-  class CreatePost < Mutations::BaseMutation
-
+  class CreatePost < BaseMutation
     argument :post, Types::PostAttributes, required: true
 
     field :post, Types::PostType, null: false
 
     def resolve(post:)
-      post = Post.create(
-        title: post[:username],
-        body: post[:title]
+      post = Post.new(
+        title: post[:title],
+        body: post[:body]
       )
+      post.save!
       {
         post: post
       }

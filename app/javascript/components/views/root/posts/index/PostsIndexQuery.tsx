@@ -33,7 +33,7 @@ export const PostsIndexQuery = () => {
       <p>{posts.length} posts found.</p>
       <ul>
         {posts.map(post => (
-          <li>post.title</li>
+          <li>{post.title}</li>
         ))}
       </ul>
     </>
