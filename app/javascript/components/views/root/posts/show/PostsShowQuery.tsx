@@ -3,39 +3,50 @@ import { gql } from "apollo-boost";
 import { useQuery } from "@apollo/react-hooks";
 import { IPost } from "../PostsRoot";
 
-interface IPostsAllPostsVars {}
+interface IPostsShowVars {
+  id: string;
+}
 
-interface IPostsAllPostsData {
-  posts: Array<IPost>;
+interface IPostsShowData {
+  post: IPost;
 }
 
 const POSTS_ALL_POSTS = gql`
-  query postsAllPosts {
-    posts {
+  query postsShow($id: Int!) {
+    post(id: $id) {
+      id
       title
+      body
       rating
     }
   }
 `;
 
-export const PostsShowQuery = () => {
-  const { loading, error, data } = useQuery<
-    IPostsAllPostsData,
-    IPostsAllPostsVars
-  >(POSTS_ALL_POSTS, {
-    variables: {}
-  });
+interface IPostsShowQueryProps {
+  postId: string;
+}
+
+export const PostsShowQuery = ({
+  postId
+}: IPostsShowQueryProps): JSX.Element => {
+  const { loading, error, data } = useQuery<IPostsShowData, IPostsShowVars>(
+    POSTS_ALL_POSTS,
+    {
+      variables: {
+        id: postId
+      }
+    }
+  );
   if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error getting posts.</p>;
-  const { posts } = data;
+  if (error) {
+    console.error(error);
+    return <p>Error getting posts.</p>;
+  }
+  const { post } = data;
   return (
     <>
-      <p>{posts.length} posts found.</p>
-      <ul>
-        {posts.map(post => (
-          <li>post.title</li>
-        ))}
-      </ul>
+      <h2>{post.title}</h2>
+      <p>{post.body}</p>
     </>
   );
 };

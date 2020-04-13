@@ -12,6 +12,7 @@ interface IPostsAllPostsData {
 const POSTS_ALL_POSTS = gql`
   query postsAllPosts {
     posts {
+      id
       title
       rating
     }
@@ -32,8 +33,10 @@ export const PostsIndexQuery = () => {
     <>
       <p>{posts.length} posts found.</p>
       <ul>
-        {posts.map(post => (
-          <li>{post.title}</li>
+        {posts.map((post, index) => (
+          <a key={index} href={`/posts/${post.id}`}>
+            <li>{post.title}</li>
+          </a>
         ))}
       </ul>
     </>

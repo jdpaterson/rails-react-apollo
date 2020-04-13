@@ -1,6 +1,6 @@
 import * as React from "react";
 import PostsRoot from "../PostsRoot";
-import { PostsShowQuery } from "./PostsShowQuery";
+import { PostsShowQuery } from "../show/PostsShowQuery";
 
 interface IPostsShowProps {
   postId: string;
