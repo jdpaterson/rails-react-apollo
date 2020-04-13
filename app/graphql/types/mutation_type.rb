@@ -3,6 +3,6 @@ module Types
     field :create_user, mutation: Mutations::CreateUser
     field :sign_in_user, mutation: Mutations::SignInUser
     field :create_post, mutation: Mutations::CreatePost
-
+    field :update_post, mutation: Mutations::UpdatePost
   end
 end

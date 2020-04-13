@@ -1,13 +1,13 @@
 import * as React from "react";
 import PostsRoot from "../PostsRoot";
-import { PostsShowQuery } from "../show/PostsShowQuery";
+import { PostsEditQuery } from "./PostsEditQuery";
 
 interface IPostsShowProps {
   postId: string;
 }
 const PostsShow = ({ postId }: IPostsShowProps): JSX.Element => (
   <PostsRoot>
-    <PostsShowQuery postId={postId} />
+    <PostsEditQuery postId={postId} />
   </PostsRoot>
 );
 

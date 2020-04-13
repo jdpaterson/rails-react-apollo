@@ -2,6 +2,7 @@ import * as React from "react";
 import { gql } from "apollo-boost";
 import { useQuery } from "@apollo/react-hooks";
 import { IPost } from "../PostsRoot";
+import { PostsShowMain } from "./PostsShowMain";
 
 interface IPostsShowVars {
   id: string;
@@ -11,7 +12,7 @@ interface IPostsShowData {
   post: IPost;
 }
 
-const POSTS_ALL_POSTS = gql`
+const POSTS_SHOW = gql`
   query postsShow($id: Int!) {
     post(id: $id) {
       id
@@ -30,7 +31,7 @@ export const PostsShowQuery = ({
   postId
 }: IPostsShowQueryProps): JSX.Element => {
   const { loading, error, data } = useQuery<IPostsShowData, IPostsShowVars>(
-    POSTS_ALL_POSTS,
+    POSTS_SHOW,
     {
       variables: {
         id: postId
@@ -45,8 +46,7 @@ export const PostsShowQuery = ({
   const { post } = data;
   return (
     <>
-      <h2>{post.title}</h2>
-      <p>{post.body}</p>
+      <PostsShowMain post={post} />
     </>
   );
 };
