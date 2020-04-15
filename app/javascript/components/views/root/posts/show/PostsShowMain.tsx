@@ -10,6 +10,9 @@ export const PostsShowMain = ({ post }: IPostsShowMainProps): JSX.Element => (
   <>
     <h2>{post.title}</h2>
     <p>{post.body}</p>
+    <div>
+      <img src={post.photoUrl} alt={"post photo"} />
+    </div>
     <LinkButton aProps={{href: `/posts/${post.id}/edit`}} buttonProps={{title: "Edit"}} />
   </>
 );

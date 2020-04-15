@@ -5,6 +5,6 @@ export const postFields = gql`
     id
     body
     title
-    rating
+    photoUrl
   }
 `;

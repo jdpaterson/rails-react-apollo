@@ -4,8 +4,9 @@ module Types
 
     argument :__typename, String, required: false
     argument :id, ID, required: false
-    argument :title, String, required: false
-    argument :body, String, required: false
-    argument :rating, Integer, required: false
+    argument :body, String, required: true
+    argument :photo_url, String, required: true
+    argument :title, String, required: true
+
   end
 end

@@ -89,6 +89,16 @@ export const PostsEditMain = ({ post }: IPostsEditMainProps): JSX.Element => {
             label={{ title: "Post Body:" }}
           />
         </FormItem>
+        <FormItem>
+          <InputText
+            input={{
+              onChange: ({ target: { value } }) =>
+                setPostsEditForm({ ...postsEditForm, photoUrl: value }),
+              value: postsEditForm.photoUrl || ""
+            }}
+            label={{ title: "Post PhotoUrl:" }}
+          />
+        </FormItem>
       </FormBody>
       <FormFooter>
         <FormItem>

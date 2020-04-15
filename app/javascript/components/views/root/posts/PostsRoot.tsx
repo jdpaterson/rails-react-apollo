@@ -3,10 +3,11 @@ import Root from "../Root";
 import { SubNavbar } from "../../../library/nav";
 
 export interface IPost {
-  id?: string;
-  title?: string;
   body?: string;
+  id?: string;
+  photoUrl?: string;
   rating?: number;
+  title?: string;
 }
 
 interface IPostsRootProps {}

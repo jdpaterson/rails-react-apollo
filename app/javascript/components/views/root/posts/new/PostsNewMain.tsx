@@ -11,6 +11,7 @@ import {
   InputSubmit
 } from "../../../../library";
 import { toast } from "react-toastify";
+import { postFields } from "../posts.gql";
 
 interface IPostsCreatePostsVars {
   input: {
@@ -26,23 +27,24 @@ const POSTS_CREATE_POST = gql`
   mutation createPost($input: CreatePostInput!) {
     createPost(input: $input) {
       post {
-        title
-        body
-        rating
+        ...postFields
       }
     }
   }
+  ${postFields}
 `;
 
 interface IPostsNewForm {
   body: string;
+  photoUrl: string;
   title: string;
 }
 
 export const PostsNewMain = () => {
   const [postsNewForm, setPostsNewForm] = React.useState<IPostsNewForm>({
-    title: "",
-    body: ""
+    body: "",
+    photoUrl: "",
+    title: ""
   });
   const [createPost, { data }] = useMutation<
     IPostsCreatePostsData,
@@ -89,6 +91,16 @@ export const PostsNewMain = () => {
               value: postsNewForm.body
             }}
             label={{ title: "Post Body:" }}
+          />
+        </FormItem>
+        <FormItem>
+          <InputText
+            input={{
+              onChange: ({ target: { value } }) =>
+                setPostsNewForm({ ...postsNewForm, photoUrl: value }),
+              value: postsNewForm.photoUrl || ""
+            }}
+            label={{ title: "Post PhotoUrl:" }}
           />
         </FormItem>
       </FormBody>

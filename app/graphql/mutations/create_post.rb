@@ -7,7 +7,8 @@ module Mutations
     def resolve(post:)
       post = Post.new(
         title: post[:title],
-        body: post[:body]
+        body: post[:body],
+        photo_url: post[:photo_url]
       )
       post.save!
       {
