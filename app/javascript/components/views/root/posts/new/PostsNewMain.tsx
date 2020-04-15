@@ -5,7 +5,6 @@ import { IPost } from "../PostsRoot";
 import {
   FormBody,
   FormFooter,
-  FormHeader,
   FormIndex,
   FormItem,
   InputText,
@@ -18,9 +17,6 @@ interface IPostsCreatePostsVars {
     post: IPost;
   };
 }
-// interface IPostsCreatePostsVars {
-//   post: IPost;
-// }
 
 interface IPostsCreatePostsData {
   post: IPost;
@@ -39,8 +35,8 @@ const POSTS_CREATE_POST = gql`
 `;
 
 interface IPostsNewForm {
-  title: string;
   body: string;
+  title: string;
 }
 
 export const PostsNewMain = () => {
@@ -54,6 +50,9 @@ export const PostsNewMain = () => {
   >(POSTS_CREATE_POST, {
     onCompleted: (data) => {
       toast("Toast Completed Successfully");
+    },
+    onError: (err) => {
+      toast(String(err));
     }
   });
   return (
@@ -71,7 +70,6 @@ export const PostsNewMain = () => {
         }
       }}
     >
-      <FormHeader></FormHeader>
       <FormBody>
         <FormItem>
           <InputText

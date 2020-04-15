@@ -46,11 +46,12 @@ export const PostsEditMain = ({ post }: IPostsEditMainProps): JSX.Element => {
     IPostsUpdatePostVars
   >(POSTS_UPDATE_POST, {
     onCompleted: (data) => {
-      console.log("completed");
       toast("Completed Successfully");
     },
+    onError: (err) => {
+      toast(String(err));
+    }
   });
-  console.log("PostsEditForm: ", postsEditForm);
   return (
     <FormIndex
       form={{
