@@ -1,7 +1,13 @@
 import * as React from "react";
 import ApolloClient, { InMemoryCache } from "apollo-boost";
 import { ApolloProvider } from "@apollo/react-hooks";
-import { Post } from "./Post";
+import { Banner } from "../../library";
+import { RootNav } from "./RootNav";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import "../../styles.scss";
+
+interface IRootProps {}
 
 const client: ApolloClient<InMemoryCache> = new ApolloClient({
   fetchOptions: {
@@ -17,9 +23,18 @@ const client: ApolloClient<InMemoryCache> = new ApolloClient({
   }
 });
 
-const Root = (): JSX.Element => (
+toast.configure()
+
+const Root: React.FunctionComponent<IRootProps> = ({
+  children
+}): JSX.Element => (
   <ApolloProvider client={client}>
-    <Post />
+    <ToastContainer />
+    <Banner>Rails React Apollo</Banner>
+    <RootNav />
+    <main>
+    {children}
+    </main>
   </ApolloProvider>
 );
 
