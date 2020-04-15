@@ -3,6 +3,7 @@ import { useQuery } from "@apollo/react-hooks";
 import { PostsEditMain } from "./PostsEditMain";
 import { IPost } from "../PostsRoot";
 import { gql } from "apollo-boost";
+import { postFields } from "../posts.gql";
 
 export interface IPostsEditVars {
   id: string;
@@ -20,15 +21,13 @@ interface IPostsEditQueryProps {
 const POSTS_EDIT = gql`
   query postsEdit($id: Int!) {
     post(id: $id) {
-      id
-      title
-      body
-      rating
+      ...postFields
     }
     users {
       id
     }
   }
+  ${postFields}
 `;
 
 export const PostsEditQuery = ({

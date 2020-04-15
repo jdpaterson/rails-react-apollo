@@ -12,6 +12,7 @@ import {
 import { gql } from "apollo-boost";
 import { useMutation } from "@apollo/react-hooks";
 import { toast } from "react-toastify";
+import { postFields } from "../posts.gql";
 
 interface IPostsUpdatePostVars {
   input: {
@@ -27,12 +28,11 @@ const POSTS_UPDATE_POST = gql`
   mutation updatePost($input: UpdatePostInput!) {
     updatePost(input: $input) {
       post {
-        title
-        body
-        rating
+        ...postFields
       }
     }
   }
+  ${postFields}
 `;
 
 interface IPostsEditMainProps {

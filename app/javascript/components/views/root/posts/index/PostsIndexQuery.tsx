@@ -2,6 +2,7 @@ import * as React from "react";
 import { gql } from "apollo-boost";
 import { useQuery } from "@apollo/react-hooks";
 import { IPost } from "../PostsRoot";
+import { postFields } from "../posts.gql";
 
 interface IPostsAllPostsVars {}
 
@@ -12,11 +13,10 @@ interface IPostsAllPostsData {
 const POSTS_ALL_POSTS = gql`
   query postsAllPosts {
     posts {
-      id
-      title
-      rating
+      ...postFields
     }
   }
+  ${postFields}
 `;
 
 export const PostsIndexQuery = () => {

@@ -3,6 +3,7 @@ import { gql } from "apollo-boost";
 import { useQuery } from "@apollo/react-hooks";
 import { IPost } from "../PostsRoot";
 import { PostsShowMain } from "./PostsShowMain";
+import { postFields } from "../posts.gql";
 
 interface IPostsShowVars {
   id: string;
@@ -15,12 +16,10 @@ interface IPostsShowData {
 const POSTS_SHOW = gql`
   query postsShow($id: Int!) {
     post(id: $id) {
-      id
-      title
-      body
-      rating
+      ...postFields
     }
   }
+  ${postFields}
 `;
 
 interface IPostsShowQueryProps {
