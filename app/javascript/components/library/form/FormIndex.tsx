@@ -7,4 +7,4 @@ interface IFormIndexProps {
 export const FormIndex: React.FunctionComponent<IFormIndexProps> = ({
   children,
   form
-}) => <form {...form}>{children}</form>;
+}) => <form className={"form-index"} {...form}>{children}</form>;

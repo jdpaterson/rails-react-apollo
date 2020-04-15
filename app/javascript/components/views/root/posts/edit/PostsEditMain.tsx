@@ -11,6 +11,7 @@ import {
 } from "../../../../library";
 import { gql } from "apollo-boost";
 import { useMutation } from "@apollo/react-hooks";
+import { toast } from "react-toastify";
 
 interface IPostsUpdatePostVars {
   input: {
@@ -43,7 +44,12 @@ export const PostsEditMain = ({ post }: IPostsEditMainProps): JSX.Element => {
   const [updatePost, { data }] = useMutation<
     IPostsUpdatePostData,
     IPostsUpdatePostVars
-  >(POSTS_UPDATE_POST);
+  >(POSTS_UPDATE_POST, {
+    onCompleted: (data) => {
+      console.log("completed");
+      toast("Completed Successfully");
+    },
+  });
   console.log("PostsEditForm: ", postsEditForm);
   return (
     <FormIndex

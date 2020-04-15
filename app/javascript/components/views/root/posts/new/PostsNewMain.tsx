@@ -11,6 +11,7 @@ import {
   InputText,
   InputSubmit
 } from "../../../../library";
+import { toast } from "react-toastify";
 
 interface IPostsCreatePostsVars {
   input: {
@@ -50,8 +51,11 @@ export const PostsNewMain = () => {
   const [createPost, { data }] = useMutation<
     IPostsCreatePostsData,
     IPostsCreatePostsVars
-  >(POSTS_CREATE_POST);
-  console.log(postsNewForm);
+  >(POSTS_CREATE_POST, {
+    onCompleted: (data) => {
+      toast("Toast Completed Successfully");
+    }
+  });
   return (
     <FormIndex
       form={{

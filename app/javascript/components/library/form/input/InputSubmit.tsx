@@ -16,7 +16,7 @@ export const InputSubmit: React.FunctionComponent<IInputSubmitProps> = ({
   <input
     {...input}
     type="submit"
-    className={"form__body" + input?.className}
+    className={"form__input-submit"}
     value={"Submit"}
   />
 );

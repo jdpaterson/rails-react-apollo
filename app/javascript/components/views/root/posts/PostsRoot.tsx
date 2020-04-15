@@ -12,16 +12,6 @@ export interface IPost {
 interface IPostsRootProps {}
 const PostsRoot: React.FunctionComponent<IPostsRootProps> = ({
   children
-}): JSX.Element => (
-  <Root>
-    <SubNavbar
-      navbarItems={[
-        { aProps: { href: "/posts/new", title: "New" } },
-        { aProps: { href: "/posts", title: "All" } }
-      ]}
-    />
-    {children}
-  </Root>
-);
+}): JSX.Element => <Root>{children}</Root>;
 
 export default PostsRoot;
