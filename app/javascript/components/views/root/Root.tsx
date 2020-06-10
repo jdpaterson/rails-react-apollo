@@ -3,8 +3,8 @@ import ApolloClient, { InMemoryCache } from "apollo-boost";
 import { ApolloProvider } from "@apollo/react-hooks";
 import { Banner } from "../../library";
 import { RootNav } from "./RootNav";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "../../styles.scss";
 
 interface IRootProps {}
@@ -23,7 +23,7 @@ const client: ApolloClient<InMemoryCache> = new ApolloClient({
   }
 });
 
-toast.configure()
+toast.configure();
 
 const Root: React.FunctionComponent<IRootProps> = ({
   children
@@ -32,9 +32,7 @@ const Root: React.FunctionComponent<IRootProps> = ({
     <ToastContainer />
     <Banner>Rails React Apollo</Banner>
     <RootNav />
-    <main>
-    {children}
-    </main>
+    <main>{children}</main>
   </ApolloProvider>
 );
 
