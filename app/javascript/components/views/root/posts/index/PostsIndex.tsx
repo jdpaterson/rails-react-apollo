@@ -7,7 +7,10 @@ const PostsIndex = (): JSX.Element => {
   return (
     <PostsRoot>
       <PostsIndexQuery />
-      <LinkButton aProps={{href: "/posts/new"}} buttonProps={{title: "New Post"}} />
+      <LinkButton
+        aProps={{ href: "/posts/new" }}
+        buttonProps={{ title: "New Post" }}
+      />
     </PostsRoot>
   );
 };
