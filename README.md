@@ -32,7 +32,7 @@ Build the image:
 Run the app:
 `docker-compose up`
 
-Create the database:
+In a separate terminal, create the database:
 `docker-compose run web bash -c "rake db:create db:migrate"`
 
 Now open http://localhost:3000 and look at your Javascript console to see messages
