@@ -1,41 +1,37 @@
 version: "3.8"
 services:
   db:
-    image: postgres:11
-    ports:
-      - 5432:5432
     environment:
       POSTGRES_PASSWORD: ${DB_USER_PASSWORD}
-    volumes:
-      - rails_react_apollo_db:/var/lib/postgresql/data
+    image: postgres:11
     networks:
-      - rails_react_apollo_net
-
-  webpacker:
-    image: ${DOCKER_IMAGE_NAME-rails_react_apollo}
-    command: ["./scripts/start_webpack_dev.sh"]
+      - net
+    ports:
+      - 5432:5432
     volumes:
-      - .:/opt/rails-react-apollo:cached
+      - db:/var/lib/postgresql/data
+  webpacker:
+    command: bash -c "yarn && bin/webpack-dev-server"
+    image: ${DOCKER_IMAGE_NAME-rails_react_apollo}
+    networks:
+      - net
     ports:
       - 3035:3035
-    networks:
-      - rails_react_apollo_net
-
-  web:
-    image: ${DOCKER_IMAGE_NAME-rails_react_apollo}
-    build:
-      context: .
-      args:
-        precompileassets: "not"
-    ports:
-      - 3000:3000
-    command:
-      ["./scripts/wait-for-it.sh", "db:5432", "--", "./scripts/start_rails.sh"]
     volumes:
       - .:/opt/rails-react-apollo:cached
+  web:
+    build: .
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    depends_on:
+      - db
+    image: ${DOCKER_IMAGE_NAME-rails_react_apollo}
     networks:
-      - rails_react_apollo_net
+      - net
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/opt/rails-react-apollo:cached
 volumes:
-  rails_react_apollo_db:
+  db:
 networks:
-  rails_react_apollo_net:
+  net:

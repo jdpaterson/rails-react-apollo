@@ -35,5 +35,3 @@ ARG INSTALL_PATH=/opt/rails-react-apollo
 ENV INSTALL_PATH $INSTALL_PATH
 WORKDIR $INSTALL_PATH
 COPY . .
-
-RUN scripts/potential_asset_precompile.sh $precompileassets
