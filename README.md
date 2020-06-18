@@ -20,17 +20,24 @@ Nest your new component somewhere under the Root component, and it's all straigh
 
 # Run in Docker
 
+## In .env
+
+```
+DB_USER_PASSWORD=postgres
+DB_HOST=db
+```
+
 ## First, build the app for development purposes
 
 `docker-compose build`
 
+## Run the app
+
+`docker-compose up`
+
 ## Create the database
 
 `docker-compose run web bash -c "rake db:create db:migrate"`
-
-## Run the app in development mode
-
-`docker-compose up`
 
 Now open http://localhost:3000 and look at your Javascript console to see messages
 
