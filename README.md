@@ -35,7 +35,9 @@ Run the app:
 In a separate terminal, create the database:
 `docker-compose run web bash -c "rake db:create db:migrate"`
 
-Now open http://localhost:3000 and look at your Javascript console to see messages
+Once webpacker has compiled (will notify you in docker-compose up terminal), open http://localhost:3000
+
+To ensure webpacker is hot reloading edit files to /app/javascript/components/* and watch see your browser refresh
 
 ## Entering the web container
 
