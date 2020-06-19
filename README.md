@@ -37,7 +37,7 @@ In a separate terminal, create the database:
 
 Once webpacker has compiled (will notify you in docker-compose up terminal), open http://localhost:3000
 
-To ensure webpacker is hot reloading edit files to /app/javascript/components/* and watch see your browser refresh
+To ensure webpacker is hot reloading edit files to /app/javascript/components/* and see your browser refresh
 
 ## Entering the web container
 
