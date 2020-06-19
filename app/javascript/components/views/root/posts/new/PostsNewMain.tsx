@@ -1,14 +1,15 @@
 import * as React from "react";
 import { gql } from "apollo-boost";
-import { useQuery, useMutation } from "@apollo/react-hooks";
+import { useMutation } from "@apollo/react-hooks";
 import { IPost } from "../PostsRoot";
 import {
   FormBody,
   FormFooter,
-  FormIndex,
+  Form,
   FormItem,
-  InputText,
-  InputSubmit
+  FormInputLabel,
+  FormInputText,
+  FormInputSubmit
 } from "../../../../library";
 import { toast } from "react-toastify";
 import { postFields } from "../posts.gql";
@@ -58,60 +59,53 @@ export const PostsNewMain = () => {
     }
   });
   return (
-    <FormIndex
-      form={{
-        onSubmit: e => {
-          e.preventDefault();
-          createPost({
-            variables: {
-              input: {
-                post: { ...postsNewForm }
-              }
+    <Form
+      onSubmit={e => {
+        e.preventDefault();
+        createPost({
+          variables: {
+            input: {
+              post: { ...postsNewForm }
             }
-          });
-        }
-      }}
+          }
+        });
+      }
+      }
     >
       <FormBody>
         <FormItem>
-          <InputText
-            input={{
-              onChange: ({ target: { value } }) =>
-                setPostsNewForm({ ...postsNewForm, title: value }),
-              value: postsNewForm.title
-            }}
-            label={{ title: "Post Title:" }}
-          />
+          <FormInputLabel>{"Post Title:"}
+            <FormInputText
+              onChange={({ target: { value } }) =>
+                setPostsNewForm({ ...postsNewForm, title: value })}
+              value={`${postsNewForm.title}`}
+            />
+          </FormInputLabel>
         </FormItem>
         <FormItem>
-          <InputText
-            input={{
-              onChange: ({ target: { value } }) =>
-                setPostsNewForm({ ...postsNewForm, body: value }),
-              value: postsNewForm.body
-            }}
-            label={{ title: "Post Body:" }}
-          />
+          <FormInputLabel>{"Post Body:"}
+            <FormInputText
+              onChange={({ target: { value } }) =>
+                setPostsNewForm({ ...postsNewForm, body: value })}
+              value={postsNewForm.body}
+            />
+          </FormInputLabel>
         </FormItem>
         <FormItem>
-          <InputText
-            input={{
-              onChange: ({ target: { value } }) =>
-                setPostsNewForm({ ...postsNewForm, photoUrl: value }),
-              value: postsNewForm.photoUrl || ""
-            }}
-            label={{ title: "Post PhotoUrl:" }}
-          />
+          <FormInputLabel>{"Post PhotoUrl:"}
+            <FormInputText
+              onChange={({ target: { value } }) =>
+                setPostsNewForm({ ...postsNewForm, photoUrl: value })}
+              value={`${postsNewForm.photoUrl}`}
+            />
+          </FormInputLabel>
         </FormItem>
       </FormBody>
       <FormFooter>
         <FormItem>
-          <InputSubmit />
+          <FormInputSubmit />
         </FormItem>
       </FormFooter>
-    </FormIndex>
+    </Form>
   );
 };
-
-// {"operationName"=>"createPost", "variables"=>{"input"=>{"post"=>{"title"=>"123", "body"=>"321"}}}
-//                                 "variables"=>{"input"=>{"post"=>{"title"=>"123", "body"=>"321"}}}

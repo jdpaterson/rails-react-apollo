@@ -1,21 +1,18 @@
 import * as React from "react";
-import { INavbarItemProps, NavbarItem } from "./NavbarItem";
+import styled from 'styled-components';
+import Colors from "../Colors";
 
-export interface INavbarProps {
-  navProps?: React.HTMLAttributes<HTMLElement>;
-  navbarItems: Array<INavbarItemProps>;
-  ulProps?: React.HTMLAttributes<HTMLElement>;
-}
-export const Navbar: React.FunctionComponent<INavbarProps> = ({
-  navProps,
-  navbarItems,
-  ulProps
-}) => (
-  <nav {...navProps} className="navbar__nav">
-    <ul {...ulProps} className="navbar__ul">
-      {navbarItems.map((item, index) => (
-        <NavbarItem key={index} {...item} />
-      ))}
-    </ul>
-  </nav>
-);
+export const Nav = styled.nav`
+  width: 100%;
+  background-color: ${Colors.peach};
+  padding: 5px;
+`;
+export const NavUL = styled.ul`
+  width: 100%;
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+`;
+export const NavLI = styled.li``;
+
+export const NavA = styled.a``;

@@ -1,2 +1,3 @@
-export * from "./InputText";
-export * from "./InputSubmit";
+export * from "./FormInputText";
+export * from "./FormInputLabel";
+export * from "./FormInputSubmit";

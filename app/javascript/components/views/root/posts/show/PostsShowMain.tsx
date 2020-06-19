@@ -1,6 +1,6 @@
 import * as React from "react";
 import { IPost } from "../PostsRoot";
-import { LinkButton } from "../../../../library";
+import { LinkA, LinkButton } from "../../../../library";
 
 interface IPostsShowMainProps {
   post: IPost;
@@ -13,6 +13,8 @@ export const PostsShowMain = ({ post }: IPostsShowMainProps): JSX.Element => (
     <div>
       <img src={post.photoUrl} alt={"post photo"} />
     </div>
-    <LinkButton aProps={{href: `/posts/${post.id}/edit`}} buttonProps={{title: "Edit"}} />
+    <LinkA href={`/posts/${post.id}/edit`} >
+      <LinkButton value="Edit">Edit</LinkButton>
+    </LinkA>
   </>
 );
