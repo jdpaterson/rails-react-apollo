@@ -10,7 +10,7 @@ import {
   FormInputLabel,
   FormInputText,
   FormInputSubmit
-} from "../../../../library";
+} from "~/library";
 import { toast } from "react-toastify";
 import { postFields } from "../posts.gql";
 

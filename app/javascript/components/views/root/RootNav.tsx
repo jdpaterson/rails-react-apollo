@@ -1,7 +1,7 @@
 import * as React from "react";
-import { Nav, NavLI, NavA, NavUL } from "../../library";
+import { Nav, NavLI, NavA, NavUL } from "~/library";
 
-interface IRootNavProps {}
+interface IRootNavProps { }
 export const RootNav: React.FunctionComponent<IRootNavProps> = (): JSX.Element => (
   <Nav>
     <NavUL>
