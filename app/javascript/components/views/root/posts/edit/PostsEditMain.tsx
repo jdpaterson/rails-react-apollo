@@ -9,7 +9,7 @@ import {
   FormInputText,
   FormFooter,
   FormInputSubmit
-} from "../../../../library";
+} from "~/library";
 import { gql } from "apollo-boost";
 import { useMutation } from "@apollo/react-hooks";
 import { toast } from "react-toastify";

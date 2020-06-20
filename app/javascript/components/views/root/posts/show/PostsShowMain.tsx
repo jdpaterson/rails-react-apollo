@@ -1,6 +1,6 @@
 import * as React from "react";
 import { IPost } from "../PostsRoot";
-import { LinkA, LinkButton } from "../../../../library";
+import { LinkA, LinkButton } from "~/library";
 
 interface IPostsShowMainProps {
   post: IPost;
