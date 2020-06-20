@@ -1,11 +1,10 @@
 import * as React from "react";
 import ApolloClient, { InMemoryCache } from "apollo-boost";
 import { ApolloProvider } from "@apollo/react-hooks";
-import { Banner } from "../../library";
+import { BannerHeader, BannerH1 } from "../../library";
 import { RootNav } from "./RootNav";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import "../../styles.scss";
 
 interface IRootProps {}
 
@@ -30,10 +29,14 @@ const Root: React.FunctionComponent<IRootProps> = ({
 }): JSX.Element => (
   <ApolloProvider client={client}>
     <ToastContainer />
-    <Banner>Rails React Apollo</Banner>
+    <BannerHeader>
+      <BannerH1>
+        Rails React Apollo
+      </BannerH1>
+    </BannerHeader>
     <RootNav />
     <main>
-    {children}
+      {children}
     </main>
   </ApolloProvider>
 );

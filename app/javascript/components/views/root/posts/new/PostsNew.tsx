@@ -1,6 +1,5 @@
 import * as React from "react";
 import PostsRoot from "../PostsRoot";
-import { FormIndex } from "../../../../library";
 import { PostsNewMain } from "./";
 
 const PostsNew = (): JSX.Element => {

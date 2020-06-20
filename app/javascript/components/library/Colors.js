@@ -1,0 +1,7 @@
+export default {
+    green: "#588b8b",
+    orange: "#f28f3b",
+    peach: "#ffd5c2",
+    red: "#c8553d",
+    white: "#ffffff"
+}

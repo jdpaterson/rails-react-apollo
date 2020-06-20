@@ -1,13 +1,14 @@
 import * as React from "react";
 import { IPost } from "../PostsRoot";
 import {
-  FormIndex,
+  Form,
   FormHeader,
   FormBody,
   FormItem,
-  InputText,
+  FormInputLabel,
+  FormInputText,
   FormFooter,
-  InputSubmit
+  FormInputSubmit
 } from "../../../../library";
 import { gql } from "apollo-boost";
 import { useMutation } from "@apollo/react-hooks";
@@ -53,58 +54,53 @@ export const PostsEditMain = ({ post }: IPostsEditMainProps): JSX.Element => {
     }
   });
   return (
-    <FormIndex
-      form={{
-        onSubmit: e => {
-          e.preventDefault();
-          updatePost({
-            variables: {
-              input: {
-                post: { ...postsEditForm }
-              }
+    <Form
+      onSubmit={e => {
+        e.preventDefault();
+        updatePost({
+          variables: {
+            input: {
+              post: { ...postsEditForm }
             }
-          });
-        }
+          }
+        });
       }}
     >
       <FormHeader>Edit Post</FormHeader>
       <FormBody>
         <FormItem>
-          <InputText
-            input={{
-              onChange: ({ target: { value } }) =>
-                setPostsEditForm({ ...postsEditForm, title: value }),
-              value: postsEditForm.title
-            }}
-            label={{ title: "Post Title:" }}
-          />
+          <FormInputLabel>{"Post Title:"}
+            <FormInputText
+              onChange={({ target: { value } }) =>
+                setPostsEditForm({ ...postsEditForm, title: value })}
+              value={postsEditForm.title}
+            />
+          </FormInputLabel>
         </FormItem>
         <FormItem>
-          <InputText
-            input={{
-              onChange: ({ target: { value } }) =>
-                setPostsEditForm({ ...postsEditForm, body: value }),
-              value: postsEditForm.body
-            }}
-            label={{ title: "Post Body:" }}
-          />
+          <FormInputLabel>{"Post Body:"}
+            <FormInputText
+              onChange={({ target: { value } }) =>
+                setPostsEditForm({ ...postsEditForm, body: value })}
+              value={`${postsEditForm.body}`}
+            />
+          </FormInputLabel>
         </FormItem>
         <FormItem>
-          <InputText
-            input={{
-              onChange: ({ target: { value } }) =>
-                setPostsEditForm({ ...postsEditForm, photoUrl: value }),
-              value: postsEditForm.photoUrl || ""
-            }}
-            label={{ title: "Post PhotoUrl:" }}
-          />
+          <FormInputLabel>{"Post PhotoUrl:"}
+            <FormInputText
+              onChange={({ target: { value } }) =>
+                setPostsEditForm({ ...postsEditForm, photoUrl: value })}
+              value={`${postsEditForm.photoUrl}`}
+            />
+          </FormInputLabel>
         </FormItem>
       </FormBody>
       <FormFooter>
         <FormItem>
-          <InputSubmit />
+          <FormInputSubmit />
         </FormItem>
       </FormFooter>
-    </FormIndex>
+    </Form>
   );
 };
