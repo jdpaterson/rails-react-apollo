@@ -1,6 +1,6 @@
 # Readme
 
-A boilerplate setup including: Rails, React, Apollo(React), Ruby-GraphQL, Typescript, ESLint + Prettier
+A boilerplate setup including: Rails, React, Apollo(React), Ruby-GraphQL, Typescript, Styled-Components, ESLint + Prettier, Docker-Compose
 
 ## Getting Started
 
