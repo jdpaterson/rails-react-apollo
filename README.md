@@ -26,14 +26,12 @@ In .env
 DB_USER_PASSWORD=postgres
 DB_HOST=db
 ```
-Build the image: 
-`docker-compose build`
 
 Run the app:
 `docker-compose up`
 
 In a separate terminal, create the database:
-`docker-compose run web bash -c "rake db:create db:migrate"`
+`docker-compose run web rails db:create db:migrate`
 
 Once webpacker has compiled (will notify you in docker-compose up terminal), open http://localhost:3000
 
