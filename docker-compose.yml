@@ -10,25 +10,25 @@ services:
       - 5432:5432
     volumes:
       - db:/var/lib/postgresql/data
-  webpacker:
-    command: bash -c "yarn && bin/webpack-dev-server"
-    image: ${DOCKER_IMAGE_NAME-rails_react_apollo}
-    networks:
-      - net
-    ports:
-      - 3035:3035
-    volumes:
-      - .:/opt/rails-react-apollo:cached
   web:
     build: .
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     depends_on:
       - db
-    image: ${DOCKER_IMAGE_NAME-rails_react_apollo}
+    image: rails_react_apollo
     networks:
       - net
     ports:
       - 3000:3000
+    volumes:
+      - .:/opt/rails-react-apollo:cached
+  webpacker:
+    command: bash -c "yarn && bin/webpack-dev-server"
+    image: rails_react_apollo
+    networks:
+      - net
+    ports:
+      - 3035:3035
     volumes:
       - .:/opt/rails-react-apollo:cached
 volumes:
